@@ -9,28 +9,27 @@
     <title><?= $config['site']['title'] ?></title>
     <link href="static/style.css" rel="stylesheet" type="text/css">
     <script src="static/jquery.js" type="text/javascript"></script>
+    <script src="static/application.js" type="text/javascript"></script>
 </head>
 <body>
-
-<?php
-    require 'application.php';
-?>
-
-<?php
-    Section::_('top');
-?>
-
-<div class="left">
     <?php
-        Section::_('left');
+        require 'application.php';
     ?>
-</div>
 
-<div class="right">
     <?php
-        Section::_('right');
+        Section::_('top');
     ?>
-</div>
 
+    <div class="left">
+        <?php
+            Section::_('left');
+        ?>
+    </div>
+
+    <div class="right">
+        <?php
+            Section::_('right');
+        ?>
+    </div>
 </body>
 </html>

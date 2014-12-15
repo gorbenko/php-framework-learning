@@ -10,7 +10,6 @@ class ModuleGuestbook extends Module {
     function __construct() {
         $this->file_path =
             Site::buildModulePath($this->module_name, true) .
-            DIRECTORY_SEPARATOR .
             $this->file_name;
     }
 
@@ -25,8 +24,8 @@ class ModuleGuestbook extends Module {
                 name="{$this->module_name}-form"
                 action="?mod=$this->module_name&action=add"
             >
-                <p><input name="first-name" class="guestbook-form-first-name" placeholder="Имя"></p>
-                <p><textarea name="message" class="guestbook-form-message" placeholder="Сообщение"></textarea></p>
+                <p><input required name="first-name" class="guestbook-form-first-name" placeholder="Имя"></p>
+                <p><textarea required name="message" class="guestbook-form-message" placeholder="Сообщение"></textarea></p>
                 <p class="guestbook-button"><input type="submit" value="Отправить"></p>
             </form>
             <div class="{$this->module_name}-board">
@@ -48,6 +47,8 @@ EOT;
     }
 
     public function action_add() {
+        if (!count($_POST)) return;
+
         if ($_POST['first-name'] && $_POST['message']) {
             $handle = fopen($this->file_path, 'a+');
             if ($handle) {

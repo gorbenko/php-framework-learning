@@ -1,0 +1,109 @@
+/* упорядочевание стилей см. csscomb, zend-coding */
+/*  CSS preprocessors */
+
+body
+{
+    font: normal 14px Arial, sans-serif;
+
+    margin: 0;
+    padding: 0;
+}
+
+.header
+{
+    box-sizing: border-box;
+    height: 70px;
+    padding: 20px;
+
+    background-color: #eee;
+}
+
+.header-title
+{
+    margin: 0;
+}
+
+.header-link
+{
+    text-decoration: none;
+
+    color: #000;
+}
+
+.left
+{
+    float: left;
+
+    width: 40%;
+    padding: 20px;
+}
+
+.right
+{
+    float: right;
+
+    width: 40%;
+    padding: 20px;
+}
+
+/* Module Guestbook */
+.guestbook-form-first-name,
+.guestbook-form-message
+{
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.guestbook-form-message
+{
+    height: 100px;
+
+    resize: vertical;
+}
+
+.guestbook-button
+{
+    padding: 10px;
+
+    text-align: right;
+
+    background-color: #eee;
+}
+
+/* Module Gallery */
+.gallery
+{
+    height: 300px;
+    padding: 0 20px;
+
+    background-color: #ddd;
+}
+
+.gallery-title
+{
+    display: inline-block;
+}
+
+.message
+{
+    padding: 10px;
+
+    border: 1px solid;
+}
+
+.message-success
+{
+    color: green;
+    background-color: rgba(0, 128, 0, .10);
+}
+
+.message-fail
+{
+    color: #f00;
+    background-color: rgba(255, 0, 0, .10);
+}
+
+.message-normal
+{
+    color: #000;
+}

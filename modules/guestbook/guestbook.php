@@ -17,19 +17,21 @@ class ModuleGuestbook extends Module {
         // TODO: использовать шаблонизатор
 
         return <<<EOT
-            <h2 class="title">Гостевая книга</h2>
-            {$this->getNotifications()}
-            <form method="post"
-                class="{$this->module_name}-form"
-                name="{$this->module_name}-form"
-                action="?mod=$this->module_name&action=add"
-            >
-                <p><input required name="first-name" class="guestbook-form-first-name" placeholder="Имя"></p>
-                <p><textarea required name="message" class="guestbook-form-message" placeholder="Сообщение"></textarea></p>
-                <p class="guestbook-button"><input type="submit" value="Отправить"></p>
-            </form>
-            <div class="{$this->module_name}-board">
-                {$this->getMessages()}
+            <div class="{$this->module_name}">
+                <h2 class="title">Гостевая книга</h2>
+                {$this->getNotifications()}
+                <form method="post"
+                    class="{$this->module_name}-form"
+                    name="{$this->module_name}-form"
+                    action="?mod=$this->module_name&action=add"
+                >
+                    <p><input required name="first-name" class="guestbook-form-first-name" placeholder="Имя"></p>
+                    <p><textarea required name="message" class="guestbook-form-message" placeholder="Сообщение"></textarea></p>
+                    <p class="guestbook-button"><input type="submit" value="Отправить"></p>
+                </form>
+                <div class="{$this->module_name}-board">
+                    {$this->getMessages()}
+                </div>
             </div>
 EOT;
     }
@@ -79,7 +81,7 @@ EOT;
         $fsize = @filesize($this->file_path); // оператор @ подавляет вывод ошибок
         if (file_exists($this->file_path) && $fsize) {
            if ($fsize) {
-               $handle = fopen($this->file_path, 'rb');
+               $handle = fopen($this->file_path, 'rt');
                $data = fread($handle, $fsize);
                fclose($handle);
                return nl2br(htmlspecialchars($data));

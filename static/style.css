@@ -11,6 +11,8 @@ body
 
 .header
 {
+    position: relative;
+
     box-sizing: border-box;
     height: 70px;
     padding: 20px;
@@ -28,6 +30,17 @@ body
     text-decoration: none;
 
     color: #000;
+}
+
+.header-currency
+{
+    font-size: 12px;
+
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    color: #f00;
 }
 
 .left

@@ -9,7 +9,7 @@ class ModuleGallery extends Module {
     }
 
     public function render() {
-        $script_path = Site::buildModulePath($this->module_name, true) . DIRECTORY_SEPARATOR . $this->module_name . '.js';
+        $script_path = Site::buildModulePath($this->module_name, true) . $this->module_name . '.js';
 
         return <<<EOT
             <div class="{$this->module_name}">

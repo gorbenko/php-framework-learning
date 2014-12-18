@@ -10,5 +10,10 @@
             'top'   => array('header'),
             'left'  => array('guestbook'),
             'right' => array('gallery')
+        ),
+        'server' => array(
+            'xmlrpc' => array(
+                'server' => 'localhost'
+            )
         )
     );

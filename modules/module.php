@@ -2,6 +2,12 @@
 
 class Module {
 
+    public $script_path;
+
+    function __construct() {
+        $this->script_path = Site::buildModulePath($this->module_name, true) . $this->module_name . '.js';
+    }
+
     /**
      * Method is called before any action
      */

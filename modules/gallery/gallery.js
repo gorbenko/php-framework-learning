@@ -3,7 +3,7 @@ Site.addFunction(function () {
         $(this).remove(); // удаляем кнопку
 
         $.get('/index2.php?mod=gallery&action=getImageTag', function (data) {
-            $('.gallery').append($(data).fadeIn(250));
+            $('.gallery-image-wrap').html($(data).fadeIn(250));
         });
     });
 });

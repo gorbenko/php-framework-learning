@@ -20,13 +20,13 @@
         Section::_('top');
     ?>
 
-    <div class="left">
+    <div class="left section">
         <?php
             Section::_('left');
         ?>
     </div>
 
-    <div class="right">
+    <div class="right section">
         <?php
             Section::_('right');
         ?>

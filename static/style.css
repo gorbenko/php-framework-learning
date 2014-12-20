@@ -43,6 +43,20 @@ body
     color: #f00;
 }
 
+.header-layout
+{
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+}
+
+.header-layout span
+{
+    font-size: 12px;
+
+    color: #f00;
+}
+
 .left
 {
     float: left;
@@ -60,6 +74,11 @@ body
 }
 
 /* Module Guestbook */
+.guestbook
+{
+    background-color: #fff;
+}
+
 .guestbook-form-first-name,
 .guestbook-form-message
 {
@@ -103,17 +122,45 @@ body
     width: 480px;
     height: 360px;
 
-    transition: width .5s ease-in-out, height .5s ease-in-out, border-radius .5s ease-in-out;
-
     box-shadow: 0 0 10px rgba(0, 0, 0, .5);
 }
 
-.gallery-image:hover
-{
-    width: 240px;
-    height: 180px;
+/* Draggable */
 
-    border-radius: 50%;
+.section.draggable
+{
+    border: 3px dashed #ccc;
+}
+
+.module.draggable
+{
+    top: auto;
+    left: auto;
+
+    border: 1px dashed rgba(255, 0, 0, .5);
+}
+
+body.layout
+{
+    -webkit-user-select: none;
+            user-select: none;
+}
+
+.module.draggable.mousedown
+{
+    position: fixed;
+
+    cursor: move;
+
+    border-width: 2px;
+    border-color: #f00;
+}
+
+.pseudo-button
+{
+    cursor: pointer;
+
+    border-bottom: 1px dashed;
 }
 
 .message

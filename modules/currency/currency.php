@@ -2,6 +2,8 @@
 
 class ModuleCurrency extends Module {
 
+    public $module_name = 'currency';
+
     public function action_rate() {
         $request_xml = file_get_contents("php://input");
 

@@ -2,12 +2,14 @@
 
 class ModuleGuestbook extends Module {
 
-    private $module_name   = 'guestbook';
+    public  $module_name   = 'guestbook';
     private $file_name     = 'messages.txt';
     private $notifications = array();
     private $file_path;
 
     function __construct() {
+        parent::__construct();
+
         $this->file_path =
             Site::buildModulePath($this->module_name, true) .
             $this->file_name;
@@ -17,7 +19,7 @@ class ModuleGuestbook extends Module {
         // TODO: использовать шаблонизатор
 
         return <<<EOT
-            <div class="{$this->module_name}">
+            <div class="{$this->module_name} module">
                 <h2 class="title">Гостевая книга</h2>
                 {$this->getNotifications()}
                 <form method="post"

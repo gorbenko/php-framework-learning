@@ -27,6 +27,6 @@ class Section {
             }
         }
 
-        echo $result;
+        return $result;
     }
 }

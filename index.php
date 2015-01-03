@@ -1,35 +1,21 @@
 <?php
-    define('SITE', true); // защита от прямого доступа к скриптам
+    define('SITE', true);
+
     require_once 'config.php';
-?>
-<!DOCTYPE html>
-<html>
-<head lang="<?= $config['site']['lang'] ?>">
-    <meta charset="UTF-8">
-    <title><?= $config['site']['title'] ?></title>
-    <link href="static/style.css" rel="stylesheet" type="text/css">
-    <script src="static/jquery.js" type="text/javascript"></script>
-    <script src="static/application.js" type="text/javascript"></script>
-</head>
-<body>
-    <?php
-        require 'application.php';
-    ?>
+    require 'application.php';
 
-    <?php
-        Section::_('top');
-    ?>
+    require_once __DIR__ . '/vendor/autoload.php';
 
-    <div class="left section">
-        <?php
-            Section::_('left');
-        ?>
-    </div>
+    $loader = new Twig_Loader_Filesystem(__DIR__);
+    $twig = new Twig_Environment($loader);
+    $template = $twig->loadTemplate('main.html');
 
-    <div class="right section">
-        <?php
-            Section::_('right');
-        ?>
-    </div>
-</body>
-</html>
+    echo $template->render(array(
+        'lang'  => $config['site']['lang'],
+        'title' => $config['site']['title'],
+        'sections' => array(
+            'top' => Section::_('top'),
+            'left' => Section::_('left'),
+            'right' => Section::_('right')
+        )
+    ));

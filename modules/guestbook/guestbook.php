@@ -19,6 +19,7 @@ class ModuleGuestbook extends Module {
         // TODO: использовать шаблонизатор
 
         return <<<EOT
+            <script type="text/javascript" src="{$this->script_path}"></script>
             <div class="{$this->module_name} module">
                 <h2 class="title">Гостевая книга</h2>
                 {$this->getNotifications()}
@@ -27,9 +28,12 @@ class ModuleGuestbook extends Module {
                     name="{$this->module_name}-form"
                     action="?mod=$this->module_name&action=add"
                 >
-                    <p><input required name="first-name" class="guestbook-form-first-name" placeholder="Имя"></p>
-                    <p><textarea required name="message" class="guestbook-form-message" placeholder="Сообщение"></textarea></p>
-                    <p class="guestbook-button"><input type="submit" value="Отправить"></p>
+                    <p><input required name="first-name" class="guestbook-form-first-name" value="Иван" placeholder="Имя"></p>
+                    <p><textarea required name="message" class="guestbook-form-message" placeholder="Сообщение">Привет, мир!</textarea></p>
+                    <p class="guestbook-panel">
+                        <input type="submit" value="Отправить">
+                        <input class="guestbook-button-ajax" type="button" value="Отправить ajax">
+                    </p>
                 </form>
                 <div class="{$this->module_name}-board">
                     {$this->getMessages()}

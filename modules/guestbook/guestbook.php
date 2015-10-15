@@ -59,8 +59,10 @@ EOT;
 
         if ($_POST['first-name'] && $_POST['message']) {
             $handle = fopen($this->file_path, 'a+');
+
             if ($handle) {
                 $date = date('d.m.Y H:m:i');
+
                 if (fwrite($handle, "{$_POST['first-name']}: {$_POST['message']} ({$date}) \n")) {
                     array_push($this->notifications, array(
                         'text' => 'Запись добавлена!',
@@ -85,8 +87,9 @@ EOT;
 
     private function getMessages() {
         $fsize = @filesize($this->file_path); // оператор @ подавляет вывод ошибок
+
         if (file_exists($this->file_path) && $fsize) {
-           if ($fsize) {
+            if ($fsize) {
                $handle = fopen($this->file_path, 'rt');
                $data = fread($handle, $fsize);
                fclose($handle);

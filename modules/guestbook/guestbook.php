@@ -16,30 +16,13 @@ class ModuleGuestbook extends Module {
     }
 
     public function render() {
-        // TODO: использовать шаблонизатор
-
-        return <<<EOT
-            <script type="text/javascript" src="{$this->script_path}"></script>
-            <div class="{$this->module_name} module">
-                <h2 class="title">Гостевая книга</h2>
-                {$this->getNotifications()}
-                <form method="post"
-                    class="{$this->module_name}-form"
-                    name="{$this->module_name}-form"
-                    action="?mod=$this->module_name&action=add"
-                >
-                    <p><input required name="first-name" class="guestbook-form-first-name" value="Иван" placeholder="Имя"></p>
-                    <p><textarea required name="message" class="guestbook-form-message" placeholder="Сообщение">Привет, мир!</textarea></p>
-                    <p class="guestbook-panel">
-                        <input type="submit" value="Отправить">
-                        <input class="guestbook-button-ajax" type="button" value="Отправить ajax">
-                    </p>
-                </form>
-                <div class="{$this->module_name}-board">
-                    {$this->getMessages()}
-                </div>
-            </div>
-EOT;
+        return $this->template->render(array(
+            'title' => 'Гостевая книга',
+            'module_name' => $this->module_name,
+            'notifications' => $this->getNotifications(),
+            'messages' => $this->getMessages(),
+            'script_path' => $this->script_path
+        ));
     }
 
     public function getNotifications() {

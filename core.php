@@ -7,7 +7,6 @@ define('MESSAGE_FAIL',    'fail');
 define('MESSAGE_NORMAL',  'normal');
 
 class Site {
-
     function __construct() {
         error_reporting(E_ALL);
         ini_set('display_errors', 1);
@@ -23,7 +22,7 @@ class Site {
         return $this;
     }
 
-    static function buildModulePath($module_name, $dir = false) {
+    static function buildModulePath($module_name, $onlyPath = false) {
         global $config;
 
         $result = $config['site']['modules_path'] .
@@ -31,7 +30,7 @@ class Site {
             $module_name .
             DIRECTORY_SEPARATOR;
 
-        if (!$dir) {
+        if (!$onlyPath) {
             $result .= $module_name . '.php';
         }
 

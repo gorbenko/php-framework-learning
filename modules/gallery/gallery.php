@@ -11,17 +11,11 @@ class ModuleGallery extends Module {
     }
 
     public function render() {
-        return <<<EOT
-            <div class="{$this->module_name} module">
-                <script type="text/javascript" src="{$this->script_path}"></script>
-                <h2 class="{$this->module_name}-title">Фотогаллерея</h2><br>
-                <span class="{$this->module_name}-image-wrap">
-                    <input type="button" class="{$this->module_name}-ajax-button" value="Загрузить фото (ajax)">
-                </span>
-                <br><br>
-                <a href='/index2.php?mod=gallery&action=getImage' target='_blank'>Вывод изображений в браузер</a>
-            </div>
-EOT;
+        return $this->template->render(array(
+            'title' => 'Фотогаллерея',
+            'module_name' => $this->module_name,
+            'script_path' => $this->script_path
+        ));
     }
 
     public function action_getImageTag() {

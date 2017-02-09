@@ -1,0 +1,22 @@
+<script type="text/javascript" src="{{ script_path }}"></script>
+{% autoescape false %}
+<div class="{{ module_name }} module">
+    <h2 class="title">{{ title }}</h2>
+    {{ notifications }}
+    <form method="post"
+        class="{{ module_name }}-form"
+        name="{{ module_name }}-form"
+        action="?mod={{ module_name }}&action=add"
+    >
+        <p><input required name="first-name" class="guestbook-form-first-name" value="" placeholder="Имя"></p>
+        <p><textarea required name="message" class="guestbook-form-message" placeholder="Сообщение"></textarea></p>
+        <p class="guestbook-panel">
+            <input type="submit" value="Отправить">
+            <input class="guestbook-button-ajax" type="button" value="Отправить ajax">
+        </p>
+    </form>
+    <div class="{{ module_name }}-board">
+        {{ messages }}
+    </div>
+</div>
+{% endautoescape %}

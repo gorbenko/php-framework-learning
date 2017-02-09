@@ -30,7 +30,7 @@ class ModuleGuestbook extends Module {
 
         if (count($this->notifications) > 0) {
             foreach($this->notifications as $notification) {
-                $result .= "<div class='message message-{$notification['theme']}'>{$notification['text']}</div>";
+                $result .= Site::printMessage($notification['text'], $notification['theme'], true);
             }
         }
 
@@ -65,11 +65,10 @@ class ModuleGuestbook extends Module {
                 'theme' => MESSAGE_FAIL)
             );
         }
-//        header('Location: /');
     }
 
     private function getMessages() {
-        $fsize = @filesize($this->file_path); // оператор @ подавляет вывод ошибок
+        $fsize = @filesize($this->file_path); // FYI: оператор @ подавляет вывод ошибок
 
         if (file_exists($this->file_path) && $fsize) {
             if ($fsize) {

@@ -7,6 +7,7 @@ define('MESSAGE_FAIL',    'fail');
 define('MESSAGE_NORMAL',  'normal');
 
 class Site {
+
     function __construct() {
         error_reporting(E_ALL);
         ini_set('display_errors', 1);
@@ -38,7 +39,15 @@ class Site {
     }
 
     static function printMessage($message, $theme, $onlyReturn = false) {
-        $result = "<div class='message message-{$theme}'>{$message}</div>";
+        $loader = new Twig_Loader_Filesystem(__DIR__ . DIRECTORY_SEPARATOR . 'views');
+        $twig = new Twig_Environment($loader);
+
+        $template = $twig->loadTemplate('message.html');
+
+        $result = $template->render(array(
+            'message' => $message,
+            'theme' => $theme
+        ));
 
         if (!$onlyReturn) {
             echo $result;

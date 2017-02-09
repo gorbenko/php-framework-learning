@@ -18,7 +18,7 @@ class Section {
                 foreach(self::$stack[$module] as $content) {
                     $result .= $content;
                 }
-            }  else {
+            } else {
                 $site->loadModule($module);
                 $class_name = 'Module' . ucfirst($module);
 

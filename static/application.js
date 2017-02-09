@@ -13,6 +13,7 @@ var Site = function() {
 
         addFunction: function (f) {
             funcs.push(f);
+            
             return this;
         },
 

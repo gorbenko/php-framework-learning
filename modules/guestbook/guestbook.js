@@ -4,7 +4,7 @@ Site.addFunction(function () {
         var message = document.querySelector('.guestbook-form-message').value;
 
         Site.ajax({
-            url: 'http://localhost/index2.php?mod=guestbook&action=add',
+            url: '/index2.php?mod=guestbook&action=add',
             method: 'POST',
             params: {
                 'first-name': name,

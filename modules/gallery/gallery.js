@@ -1,4 +1,4 @@
-Site.addFunction(function () {
+Site.declare('gallery', function () {
     $('.gallery-ajax-button').click(function () {
         $(this).remove(); // удаляем кнопку
 

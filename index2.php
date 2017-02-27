@@ -6,4 +6,4 @@
     require_once __DIR__ . '/vendor/autoload.php';
 
     require_once 'config.php';
-    require 'application.php';
+    require 'bootstrap.php';

@@ -7,26 +7,32 @@
 var Site = function() {
 
     // функции запускаемые по DOM ready
-    var funcs = [];
+    var funcs = {};
 
     return {
 
-        addFunction: function (f) {
-            funcs.push(f);
-            
+        declare: function (block, fn) {
+            funcs[block] = fn;
+
             return this;
         },
 
         init: function () {
-            for (i in funcs) {
+            for (var i in funcs) {
                 try {
                     funcs[i]();
                 } catch (e) {
                     if (window.console) {
-                        console.log(e);
+                        console.error(e);
                     }
                 }
             }
+
+            return this;
+        },
+
+        _getModules: function () {
+            return funcs;
         },
 
         ajax: function (options) {

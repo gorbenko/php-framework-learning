@@ -25,7 +25,7 @@ AJAX-запросы, следует отправлять на ```index2.php```. 
 ##JavaScript
 Клиентский код следует заворачивать в функцию передаваемую аргументом в глобальный объект ```Site```.<br>
 ```javascript
-Site.addFunction(function () {
+Site.declare(moduleName, function () {
     console.log('Hello world!');
 });
 ```

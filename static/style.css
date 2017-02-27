@@ -1,14 +1,64 @@
-/* упорядочевание стилей см. csscomb, zend-coding */
+/* упорядочевание стилей см. csscomb, zen-coding */
 /*  CSS preprocessors */
 
+/* Common begin */
 body
 {
-    font: normal 14px Arial, sans-serif;
-
     margin: 0;
     padding: 0;
+
+    font: normal 14px Arial, sans-serif;
 }
 
+.pseudo-button
+{
+    cursor: pointer;
+
+    border-bottom: 1px dashed;
+}
+
+.left
+{
+    float: left;
+
+    width: 40%;
+    padding: 20px;
+}
+
+.right
+{
+    float: right;
+
+    width: 40%;
+    padding: 20px;
+}
+
+.message
+{
+    padding: 10px;
+
+    border: 1px solid;
+}
+
+.message-success
+{
+    color: green;
+    background-color: rgba(0, 128, 0, .10);
+}
+
+.message-fail
+{
+    color: #f00;
+    background-color: rgba(255, 0, 0, .10);
+}
+
+.message-normal
+{
+    color: #000;
+}
+/* Common end */
+
+/* Module Header begin */
 .header
 {
     position: relative;
@@ -34,11 +84,11 @@ body
 
 .header-currency
 {
-    font-size: 12px;
-
     position: absolute;
     top: 20px;
     right: 20px;
+
+    font-size: 12px;
 
     color: #f00;
 }
@@ -56,24 +106,9 @@ body
 
     color: #f00;
 }
+/* Module Header end */
 
-.left
-{
-    float: left;
-
-    width: 40%;
-    padding: 20px;
-}
-
-.right
-{
-    float: right;
-
-    width: 40%;
-    padding: 20px;
-}
-
-/* Module Guestbook */
+/* Module Guestbook begin */
 .guestbook
 {
     background-color: #fff;
@@ -101,8 +136,9 @@ body
 
     background-color: #eee;
 }
+/* Module Guestbook end */
 
-/* Module Gallery */
+/* Module Gallery begin */
 .gallery
 {
     padding: 0 20px 20px;
@@ -124,65 +160,29 @@ body
 
     box-shadow: 0 0 10px rgba(0, 0, 0, .5);
 }
+/* Module Gallery end */
 
-/* Draggable */
-
-.section.draggable
+/* Draggable begin */
+.section.dropzone
 {
     border: 3px dashed #ccc;
 }
 
+.section.dropzone.receiver
+{
+    border-color: #7a7a7a;
+    background-color: #ccc;
+}
+
 .module.draggable
-{
-    top: auto;
-    left: auto;
-
-    border: 1px dashed rgba(255, 0, 0, .5);
-}
-
-body.layout
-{
-    -webkit-user-select: none;
-            user-select: none;
-}
-
-.module.draggable.mousedown
-{
-    position: fixed;
-
-    cursor: move;
-
-    border-width: 2px;
-    border-color: #f00;
-}
-
-.pseudo-button
-{
-    cursor: pointer;
-
-    border-bottom: 1px dashed;
-}
-
-.message
 {
     padding: 10px;
 
-    border: 1px solid;
+    outline: 1px dashed rgba(255, 0, 0, .5);
 }
 
-.message-success
+.module.draggable.move
 {
-    color: green;
-    background-color: rgba(0, 128, 0, .10);
+    opacity: .5;
 }
-
-.message-fail
-{
-    color: #f00;
-    background-color: rgba(255, 0, 0, .10);
-}
-
-.message-normal
-{
-    color: #000;
-}
+/* Draggable end */

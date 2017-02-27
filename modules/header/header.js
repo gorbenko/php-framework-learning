@@ -1,55 +1,64 @@
-Site.addFunction(function () {
-    // TODO: быдло-код!
-    $('.header-layout').click(function () {
-        $(this).remove();
+Site.declare('header', function () {
+    $('.header-layout').on('click', function () {
 
-        $('.module, .section').addClass('draggable');
+        var $body = $(document.body);
 
-        var down = false,
-            offsetY = 0,
-            offsetX = 0;
+        if (!$body.hasClass('layout')) {
+            $body.addClass('layout');
 
-        $('.module.draggable').on('mousedown', function (e) {
-            var $this = $(this),
-                width = $this.width(),
-                height = $this.height();
+            $('.section').addClass('dropzone');
 
-            $(document.body).addClass('layout');
-            $this.toggleClass('mousedown');
+            $('.module')
+                .addClass('draggable')
+                .attr('draggable', true);
+        } else {
+            $body.removeClass('layout');
 
-            down = true;
-            offsetY = e.offsetY;
-            offsetX = e.offsetX;
+            $('.section').removeClass('dropzone');
 
-            $this.css({
-                top: 'auto',
-                left: 'auto',
-                width: width,
-                height: height
-            });
-        });
+            $('.module')
+                .removeClass('draggable')
+                .attr('draggable', null);
+        }
 
-        $(document).on('mousemove', function (e) {
-            if (down) {
-                $('.module.draggable').css({
-                    top: e.pageY - offsetY,
-                    left: e.pageX - offsetX
-                });
-            }
-        });
+        var dragged;
 
-        $(document).on('mouseup', function (e) {
-            var $this = $(e.target).closest('.module');
+        $(document)
+            .on('dragstart', function (event) {
+                dragged = event.target;
 
-            $(document.body).removeClass('layout');
-            $('.module.draggable').removeClass('mousedown');
+                $(event.target).addClass('move');
+            })
+            .on('dragend', function (event) {
+                $(event.target).removeClass('move');
+            })
+            .on('dragover', function (event) {
+                event.preventDefault();
+            })
+            .on('dragenter', function (event) {
+                var $target = $(event.target);
 
-            $this.css({
-                width: 'auto',
-                height: 'auto'
-            });
+                if ($target.hasClass('dropzone')) {
+                    $target.addClass('receiver');
+                }
+            })
+            .on('dragleave', function (event) {
+                var $target = $(event.target);
 
-            down = false;
-        });
+                if ($target.hasClass('dropzone')) {
+                    $target.removeClass('receiver');
+                }
+            })
+            .on('drop', function (event) {
+                event.preventDefault();
+
+                var $target = $(event.target);
+
+                if ($target.hasClass('dropzone')) {
+                    $target.removeClass('receiver');
+                    dragged.parentNode.removeChild(dragged);
+                    event.target.appendChild(dragged);
+                }
+            })
     });
 });

@@ -1,4 +1,4 @@
-Site.addFunction(function () {
+Site.declare('guestbook', function () {
     document.querySelector('.guestbook-button-ajax').addEventListener('click', function () {
         var name    = document.querySelector('.guestbook-form-first-name').value;
         var message = document.querySelector('.guestbook-form-message').value;

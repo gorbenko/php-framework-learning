@@ -17,3 +17,7 @@ $config = array(
         )
     )
 );
+
+if ($_COOKIE['site_layout']) {
+    $config['sections'] = array_merge($config['sections'], json_decode($_COOKIE['site_layout'], true));
+}

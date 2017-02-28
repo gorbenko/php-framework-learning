@@ -58,6 +58,20 @@ Site.declare('header', function () {
                     $target.removeClass('receiver');
                     dragged.parentNode.removeChild(dragged);
                     event.target.appendChild(dragged);
+
+                    var layoutConfig = {};
+                    // TODO: сделать за 1 цикл
+                    $('.section').each(function (index, section) {
+                        var sectionName = $(this).data('section');
+                        layoutConfig[sectionName] = layoutConfig[sectionName] || [];
+                    });
+
+                    $('.section').children('.module').each(function (index, module) {
+                        var sectionName = $(this).parent().data('section');
+                        layoutConfig[sectionName].push($(module).data('module'));
+                    });
+
+                    $.cookie('site.layout', JSON.stringify(layoutConfig));
                 }
             })
     });

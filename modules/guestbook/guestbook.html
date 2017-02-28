@@ -1,6 +1,6 @@
 <script type="text/javascript" src="{{ script_path }}"></script>
 {% autoescape false %}
-<div class="{{ module_name }} module">
+<div class="{{ module_name }} module" data-module="{{ module_name }}">
     <h2 class="title">{{ title }}</h2>
     {{ notifications }}
     <form method="post"
